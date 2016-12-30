@@ -1,0 +1,16 @@
+#run this by: /usr/local/mysql/bin/mysql -u root -p < create_tables.mysql 
+DROP DATABASE acepruner;
+CREATE DATABASE acepruner;
+USE acepruner;
+
+CREATE TABLE simple_tracker (
+	acl_id VARCHAR(10) NOT NULL PRIMARY KEY,
+	hitcount BIGINT NOT NULL,
+	timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	raw_ace VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE parent_acl ( 
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	raw_ace VARCHAR(255) NOT NULL
+);
